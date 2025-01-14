@@ -1,0 +1,94 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Status</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Vincula o arquivo CSS para o estilo -->
+</head>
+<body>
+    
+    <!-- Header com logo e botão -->
+    <div class="header">
+        <!-- Div que contém logo e nome -->
+        <div class="logo">
+            <img src="logo.png" alt="Logo"> <!-- Imagem da logo -->
+            <h1>Auto Status</h1> <!-- Nome do site -->
+        </div>
+        <!-- Botão de refresh -->
+        <button class="button">Gerar PDF</button>
+    </div>
+    
+    <!-- Container para a parte principal do conteúdo -->
+    <div class="container">
+        
+        <table class="status-table"> <!-- Tabela que exibe o status dos serviços -->
+            <thead>
+                <tr>
+                    <th>Service</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="status-row">
+                    <td>API</td>
+                    <td class="status-cell-operational">Operational</td> <!-- Status do serviço API -->
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="bar-container"> 
+                            <div class="bar"></div> <div class="bar"></div> <div class="bar"></div> <div class="bar"></div>
+                            <div class="bar"></div> <div class="bar"></div> <div class="bar"></div> <div class="bar"></div>
+                            <div class="bar"></div> <div class="bar"></div> <div class="bar"></div> <div class="bar"></div>
+                            <div class="bar"></div> <div class="bar"></div> <div class="bar"></div> <div class="bar"></div>
+                            <div class="bar"></div> <div class="bar"></div> <div class="bar"></div> <div class="bar"></div>
+                            <div class="bar"></div> <div class="bar"></div> <div class="bar"></div> <div class="bar"></div>
+                            <div class="bar"></div> <div class="bar"></div> <div class="bar"></div> <div class="bar"></div>
+                            <div class="bar"></div> <div class="bar"></div> <div class="bar"></div> <div class="bar"></div>
+                            <div class="bar"></div> <div class="bar"></div> <div class="bar"></div> <div class="bar"></div>
+                            <div class="bar"></div> <div class="bar"></div> <div class="bar"></div> <div class="bar"></div>
+                            <div class="bar"></div> <div class="bar"></div> <div class="bar"></div> <div class="bar"></div>
+                            <div class="bar"></div> <div class="bar"></div> <div class="bar"></div> <div class="bar"></div>
+                            <div class="bar"></div> <div class="bar"></div> <div class="bar"></div> <div class="bar"></div>
+                            <div class="bar"></div> <div class="bar"></div> <div class="bar"></div> <div class="bar"></div>
+                            <div class="bar"></div> <div class="bar"></div> <div class="bar"></div> <div class="bar"></div>
+                            <div class="bar"></div> <div class="bar"></div> <div class="bar"></div> <div class="bar"></div>
+                            <div class="bar"></div> <div class="bar"></div> <div class="bar"></div> <div class="bar"></div>
+                            <div class="bar"></div> <div class="bar"></div> <div class="bar"></div> <div class="bar"></div>
+                            <!-- Barra que representa o status -->
+                        </div>
+                    </td>
+                </tr>
+
+                
+                <tr class="status-row">
+                    <td>Website</td>
+                    <td class="status-cell-operational">Operational</td> <!-- Status do serviço Website -->
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="bar-container">
+                            <div class="bar"></div> <!-- Barra representando o status -->
+                            <div class="bar"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="status-row">
+                    <td>Support</td>
+                    <td class="status-cell-degraded">Degraded Performance</td> <!-- Status do serviço Support -->
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="bar-container">
+                            <div class="bar"></div> <!-- Barra representando o status -->
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- Rodapé do site -->
+        <div class="footer">&copy; 2023 OpenAI. All rights reserved.</div>
+    </div>
+
+</body>
+</html>
