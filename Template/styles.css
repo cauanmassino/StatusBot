@@ -1,4 +1,4 @@
-/* Estilo Geral */
+/* Estilo Geral */ 
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -45,7 +45,6 @@ body {
     background-color: #27ae60; /* Cor do botão quando o mouse passa por cima */
 }
 
-
 /* Dashboard de Status */
 .status-dashboard {
     max-width: 800px;
@@ -55,6 +54,32 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.671);
 }
+
+/* botao  de interrogação */
+.question-btn {
+    background-color: #ffffff; /* Cor de fundo azul */
+    color: #747474; /* Cor do texto */
+    border: 1px solid #3636365d; /* Borda fina de 1px com cor preta */
+    border-radius: 50%; /* Torna o botão completamente redondo */
+    width: 17px; /* Largura do botão */
+    height: 17px; /* Altura do botão */
+    font-size: 14px; /* Tamanho do texto */
+    display: flex; /* Usa flexbox para centralizar o texto */
+    align-items: center; /* Alinha o texto verticalmente */
+    justify-content: center; /* Centraliza o texto horizontalmente */
+    cursor: pointer; /* Mostra o cursor de mão ao passar sobre o botão */
+    transition: background-color 0.3s; /* Animação de transição */
+}
+
+.question-btn:hover {
+    background-color: #b4b4b4; /* Cor mais escura ao passar o mouse */
+}
+
+.tooltip {
+    position: relative; /* Necessário para o posicionamento do tooltiptext */
+    display: inline-block; /* Permite que o tooltip funcione em linha com outros elementos */
+}
+
 
 /* Item de Status */
 .status-item {
@@ -77,6 +102,22 @@ body {
 
 .status-title {
     font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Espaçamento entre o título e o botão de interrogação */
+}
+
+.status-title .question-button {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #3498db; /* Cor do botão de interrogação */
+    padding: 0;
+}
+
+.status-title .question-button:hover {
+    text-decoration: underline;
 }
 
 .status-state {
@@ -93,11 +134,28 @@ body {
 
 /* Barras Individuais */
 .bar {
-    width: 8px;
+    width: 18px;
     height: 20px;
     background-color: #2ecc71; /* Verde padrão */
     border-radius: 2px;
+    position: relative;
 }
+
+/* Ao passar o mouse, mostra a mensagem */
+.bar:hover::after {
+    content: attr(data-title); /* Usar o atributo data-title para texto */
+    position: absolute;
+    top: 30px;
+    left: 0;
+    background-color: #e9e9e9; /* Cor de fundo branca */
+    color: #000000; /* Cor do texto preta */
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 12px;
+    white-space: nowrap;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adicionando uma leve sombra para destaque */
+}
+
 
 /* Barras com Estados Específicos */
 .bar.degraded {
@@ -108,6 +166,7 @@ body {
     background-color: #e74c3c; /* Vermelho para "Outage" */
 }
 
+
 /* Rodapé do Item */
 .status-footer {
     display: flex;
@@ -117,8 +176,7 @@ body {
 }
 
 
-
-
+/* Comentários */
 .container {
     width: 80%;
     margin: 20px auto;
@@ -129,7 +187,9 @@ body {
 }
 
 .incident {
-    margin-bottom: 40px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .incident-date {
@@ -166,4 +226,37 @@ body {
 .timestamp {
     color: #7f8c8d;
     font-size: 12px;
+}
+
+/* Rodapé Footer */
+hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 2rem 0;
+}
+
+footer {
+    background: #333;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-content a {
+    color: #ff9f00;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+}
+
+.footer-content a:hover {
+    text-decoration: underline;
 }
