@@ -273,5 +273,50 @@
     </footer>
 
 
+    <script>
+        async function carregarBarras() {
+            try {
+                // Faz uma requisição para o backend
+                const response = await fetch("/api/barras");
+                const barras = await response.json();
+    
+                // Seleciona todas as barras no HTML
+                const barElements = document.querySelectorAll(".bar");
+    
+                // Verifica se o número de barras no HTML e nos dados do backend corresponde
+                if (barras.length !== barElements.length) {
+                    console.error("A quantidade de barras no HTML não corresponde aos dados recebidos!");
+                    return;
+                }
+    
+                // Atualiza as barras dinamicamente com base nos dados
+                barras.forEach((barra, index) => {
+                    const barElement = barElements[index];
+    
+                    // Remove classes antigas
+                    barElement.classList.remove("outage", "degraded");
+    
+                    // Adiciona a classe correspondente ao status e atualiza o data-title
+                    if (barra.status === "ok") {
+                        barElement.dataset.title = `${barra.dia}: Status OK`;
+                    } else if (barra.status === "outage") {
+                        barElement.classList.add("outage");
+                        barElement.dataset.title = `${barra.dia}: Status Outage`;
+                    } else if (barra.status === "degraded") {
+                        barElement.classList.add("degraded");
+                        barElement.dataset.title = `${barra.dia}: Status Degraded`;
+                    }
+                });
+            } catch (error) {
+                console.error("Erro ao carregar os dados das barras:", error);
+            }
+        }
+    
+        // Chama a função ao carregar a página
+        carregarBarras();
+    </script>
+    
+
+
 </body>
 </html
