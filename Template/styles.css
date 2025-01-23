@@ -59,21 +59,33 @@ h1 {
     background-color: #27ae60; /* Cor ao passar o mouse */
 }
 
+.status-title .bi-question-circle {
+    font-size: 18px; /* Tamanho do ícone */
+    color: #747474; /* Cor do ícone */
+    cursor: pointer; /* Cursor de mão ao passar */
+    transition: color 0.3s ease; /* Animação na mudança de cor */
+}
+
+.status-title .bi-question-circle:hover {
+    color: #4e4e4d; /* Cor do ícone ao passar o mouse */
+}
+
 /* Botão de interrogação */
 .question-btn {
-    background-color: #ffffff; /* Fundo branco */
-    color: #747474; /* Texto cinza */
-    border: 1px solid #3636365d; /* Borda fina */
+    background-color: #ce1212; /* Fundo vermelho */
+    color: white; /* Texto branco */
+    border: none; /* Sem borda */
     border-radius: 50%; /* Forma redonda */
-    width: 17px; /* Largura do botão */
-    height: 17px; /* Altura do botão */
-    font-size: 14px; /* Tamanho do texto */
-    display: flex; /* Usado para centralizar o texto */
-    align-items: center; /* Centraliza verticalmente */
-    justify-content: center; /* Centraliza horizontalmente */
+    width: 17px; /* Tamanho do botão */
+    height: 17px; /* Tamanho do botão */
+    font-size: 14px; /* Tamanho da fonte */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer; /* Mostra o cursor de mão ao passar */
-    transition: background-color 0.3s; /* Animação ao passar o mouse */
+    transition: background-color 0.3s;
 }
+
 
 .question-btn:hover {
     background-color: #b4b4b4; /* Fundo cinza escuro ao passar o mouse */
@@ -137,8 +149,24 @@ h1 {
 
 /* Estado do Status */
 .status-state {
-    font-size: 0.9rem; /* Tamanho menor para o texto */
-    color: #08ce5af3; /* Verde para "Operational" */
+    font-size: 1rem; /* Tamanho do texto */
+    font-weight: bold; /* Deixa o texto em negrito */
+    padding: 5px 10px; /* Espaçamento interno */
+    border-radius: 5px; /* Bordas arredondadas */
+}
+.status-state.operando {
+    color: #08ce5a; /* Verde para "Operando" */
+    background-color: #e8f5e84d; /* Fundo claro */
+}
+
+.status-state.parcial {
+    color: #f5a623; /* Laranja para "Parcial" */
+    background-color: #fff3e065; /* Fundo claro */
+}
+
+.status-state.parado {
+    color: #ce1212; /* Vermelho para "Parado" */
+    background-color: #fbeaea67; /* Fundo claro */
 }
 
 /* Container das Barras */
@@ -159,26 +187,58 @@ h1 {
 
 /* Modal status de cada dia */
 .bar:hover::after {
-    content: attr(data-title); /* Mostra texto do atributo data-title */
-    position: absolute; /* Posiciona em relação ao elemento */
-    top: 30px; /* Define distância do topo */
-    left: 0; /* Alinha à esquerda */
-    background-color: #ffffff; /* Fundo branco */
-    color: #000000; /* Texto preto */
-    padding: 25px; /* Espaçamento interno */
-    border-radius: 3px; /* Arredonda os cantos */
-    font-size: 12px; /* Tamanho da fonte */
+    content: attr(data-title); /* Mostra o texto do atributo data-title */
+    position: absolute;
+    top: 30px;
+    left: 0;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 25px;
+    border-radius: 3px;
+    font-size: 12px;
     white-space: nowrap; /* Evita quebra de linha */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para destaque */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
+
 
 /* Barras com estados específicos */
-.bar.degraded {
-    background-color: #e67e22; /* Laranja para "Degraded" */
+/* Classe para status "degraded" */
+.bar-ok {
+    width: 18px; /* Define a largura */
+    height: 20px; /* Define a altura */
+    background-color: #2ecc71; /* Verde padrão */
+    border-radius: 2px; /* Arredonda os cantos */
+    position: relative; /* Necessário para posicionar o tooltip */    
 }
 
-.bar.outage {
-    background-color: #e74c3c; /* Vermelho para "Outage" */
+.bar-degraded {
+    width: 18px; /* Define a largura */
+    height: 20px; /* Define a altura */
+    background-color: #eba308; /* amarelo padrão */
+    border-radius: 2px; /* Arredonda os cantos */
+    position: relative; /* Necessário para posicionar o tooltip */    
+}
+
+.bar:hover::after {
+    content: attr(data-title);
+    position: absolute;
+    top: -25px;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 5px;
+    border-radius: 3px;
+    white-space: nowrap;
+    font-size: 0.8rem;
+}
+
+/* Classe para status "outage" */
+.bar-outage {
+    width: 18px; /* Define a largura */
+    height: 20px; /* Define a altura */
+    background-color: #ff0000; /* Vermelho padrão */
+    border-radius: 2px; /* Arredonda os cantos */
+    position: relative; /* Necessário para posicionar o tooltip */
 }
 
 /* Rodapé do Status */
