@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Status Monitor</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Auto Status</title>
+    <link rel="stylesheet" href="/Static/styles.css"> 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&family=Orbitron:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
 </head>
 <body>
@@ -14,7 +16,7 @@
 <div class="header">
     <!-- Div que contém logo e nome -->
     <div class="logo">
-        <img src="/Resource/Logo_DD_N_3-removebg-preview.ico" alt="Logo"> <!-- Imagem da logo -->
+        <img src="/Back End/app/Resource/Logo_DD_N_3-removebg-preview.ico" alt="Logo"> <!-- Imagem da logo -->
         <h1>Auto Status</h1> <!-- Nome do site -->
     </div>
     <!-- Botão de refresh -->
@@ -22,198 +24,105 @@
 </div>
 
 
-    <div class="status-dashboard">
-        <!-- API -->
-        <div class="status-item">
-            <div class="status-header">
-                <div class="status-title">API <button class="question-btn" title="Este é um botão de ajuda">?</button>
-                </div>
-                <span class="status-state">Operational</span>
+<div class="status-dashboard">
+    <!-- ROBO FECHAMENTO -->
+    <div class="status-item">
+        <div class="status-header">
+            <div class="status-title">
+                Robô de Fechamento
+                <i class="bi bi-question-circle" title="Ajuda sobre este robô"></i>
             </div>
-            <div class="bar-container">
-                <!-- Barras de exemplo para API -->
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                           
-                
-                <!-- Adicione mais barras conforme necessário -->
-            </div>
-            <div class="status-footer">
-                <span>60 days ago</span>
-                <span>99.44% uptime</span>
-                <span>Today</span>
-            </div>
+            <span class="status-state" id="estado-atual">Carregando...</span> <!-- O estado será atualizado -->
         </div>
-
-        <!-- ChatGPT -->
-        <div class="status-item">
-            <div class="status-header">
-                <div class="status-title">ChatGPT <button class="question-btn" title="Este é um botão de ajuda">?</button>
-                </div>
-                <span class="status-state">Operational</span>
-            </div>
-            <div class="bar-container">
-                <!-- Barras de exemplo para ChatGPT -->
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-            </div>
-            <div class="status-footer">
-                <span>60 days ago</span>
-                <span>99.23% uptime</span>
-                <span>Today</span>
-            </div>
-        </div>
-
-        <!-- Sora -->
-        <div class="status-item">
-            <div class="status-header">
-                <div class="status-title">Sora <button class="question-btn" title="Este é um botão de ajuda">?</button></div>
-                <span class="status-state">Operational</span>
-            </div>
-            <div class="bar-container">
-                <!-- Barras de exemplo para Sora -->
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-            </div>
-            <div class="status-footer">
-                <span>60 days ago</span>
-                <span>99.47% uptime</span>
-                <span>Today</span>
-            </div>
-        </div>
-
-        <!-- Playground -->
-        <div class="status-item">
-            <div class="status-header">
-                <div class="status-title">Playground <button class="question-btn" title="Este é um botão de ajuda">?</button></div>
-                <span class="status-state">Operational</span>
-            </div>
-            <div class="bar-container">
-                <!-- Barras de exemplo para Playground -->
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-            </div>
-            <div class="status-footer">
-                <span>60 days ago</span>
-                <span>99.8% uptime</span>
-                <span>Today</span>
-            </div>
-        </div>
-
-        <!-- Labs -->
-        <div class="status-item">
-            <div class="status-header">
-                <div class="status-title">Labs <button class="question-btn" title="Este é um botão de ajuda">?</button></div>
-                <span class="status-state">Operational</span>
-            </div>
-            <div class="bar-container">
-                <!-- Barras de exemplo para Labs -->
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar" data-title="Status: OK"></div> <div class="bar" data-title="Status: OK"></div>
-                <div class="bar" data-title="Status: OK"></div><div class="bar outage" data-title="Status: outage"></div><div class="bar degraded" data-title="Status: degraded"></div>
-            </div>
-
-            <div class="status-footer">
-                <span>60 days ago</span>
-                <span>99.8% uptime</span>
-                <span>Today</span>
-            </div>
+        
+        <div class="bar-container"></div>
+        <div class="status-footer">
+            <span>30 dias atrás</span>
+            <span></span>
+            <span>Hoje</span>
         </div>
     </div>
+
+    <!-- Robô de Notificação -->
+    <div class="status-item">
+        <div class="status-header">
+            <div class="status-title">Robô de Notificação
+                <i class="bi bi-question-circle" title="Este é um botão de ajuda"></i>
+            </div> 
+            <span class="status-state">Operational</span>
+        </div>
+        <div class="bar-container"></div>
+        <div class="status-footer">
+            <span>30 dias atrás</span>
+            <span></span>
+            <span>Hoje</span>
+        </div>
+    </div>
+
+        <!-- Fluig -->
+        <div class="status-item">
+            <div class="status-header">
+                <div class="status-title">Fluig 
+                    <i class="bi bi-question-circle" title="Este é um botão de ajuda"></i>
+                </div>
+                <span class="status-state">Operational</span>
+            </div>
+            <div class="bar-container">
+                <!-- Barras de exemplo para Fluig -->
+                
+
+            </div>
+            <div class="status-footer">
+                <span>30 dias atrás</span>
+                <span></span>
+                <span>Hoje</span>
+            </div>
+        </div>
+
+        <!-- Robô 4 -->
+        <div class="status-item">
+            <div class="status-header">
+                <div class="status-title">Robô 4 
+                    <i class="bi bi-question-circle" title="Este é um botão de ajuda"></i>
+                </div>
+                <span class="status-state">Operational</span>
+            </div>
+            <div class="bar-container">
+                <!-- Barras de exemplo para Fluig -->
+                
+
+            </div>
+            <div class="status-footer">
+                <span>30 dias atrás</span>
+                <span></span>
+                <span>Hoje</span>
+            </div>
+        </div>
+
+        <!-- Robô 5 -->
+        <div class="status-item">
+            <div class="status-header">
+                <div class="status-title">Robô 5 
+                    <i class="bi bi-question-circle" title="Este é um botão de ajuda"></i>
+                </div>
+                <span class="status-state">Operational</span>
+            </div>
+            <div class="bar-container">
+                <!-- Barras de exemplo para Fluig -->
+                
+
+            </div>
+            <div class="status-footer">
+                <span>30 dias atrás</span>
+                <span></span>
+                <span>Hoje</span>
+            </div>
+        </div>
 
 
 
  <div class="container">
-    <h2>Incidentes Passados</h2>
+    <h2>Incidentes Passados <i class="fas fa-edit edit-icon"></i></h2>
         <div class="incident">
             <div class="incident-date">14 de janeiro de 2025</div>
             <div class="incident-title">O ChatGPT não consegue navegar na web para obter informações atualizadas.</div>
@@ -273,50 +182,12 @@
     </footer>
 
 
-    <script>
-        async function carregarBarras() {
-            try {
-                // Faz uma requisição para o backend
-                const response = await fetch("/api/barras");
-                const barras = await response.json();
     
-                // Seleciona todas as barras no HTML
-                const barElements = document.querySelectorAll(".bar");
-    
-                // Verifica se o número de barras no HTML e nos dados do backend corresponde
-                if (barras.length !== barElements.length) {
-                    console.error("A quantidade de barras no HTML não corresponde aos dados recebidos!");
-                    return;
-                }
-    
-                // Atualiza as barras dinamicamente com base nos dados
-                barras.forEach((barra, index) => {
-                    const barElement = barElements[index];
-    
-                    // Remove classes antigas
-                    barElement.classList.remove("outage", "degraded");
-    
-                    // Adiciona a classe correspondente ao status e atualiza o data-title
-                    if (barra.status === "ok") {
-                        barElement.dataset.title = `${barra.dia}: Status OK`;
-                    } else if (barra.status === "outage") {
-                        barElement.classList.add("outage");
-                        barElement.dataset.title = `${barra.dia}: Status Outage`;
-                    } else if (barra.status === "degraded") {
-                        barElement.classList.add("degraded");
-                        barElement.dataset.title = `${barra.dia}: Status Degraded`;
-                    }
-                });
-            } catch (error) {
-                console.error("Erro ao carregar os dados das barras:", error);
-            }
-        }
-    
-        // Chama a função ao carregar a página
-        carregarBarras();
-    </script>
-    
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
 
 
 </body>
-</html
+</html>
