@@ -71,6 +71,8 @@ async function carregarEstadoAtual() {
     }
 }
 
+;
+
 // Carrega as barras e o estado atual ao iniciar
 carregarBarras();
 carregarEstadoAtual();
