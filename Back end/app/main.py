@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, render_template
 from flask_cors import CORS
+from datetime import datetime
 import os
 
 # Caminho para os diretórios de templates e estáticos
@@ -64,4 +65,4 @@ def get_estado_atual():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    app.run(host="0.0.0.0",debug=True, port=5000)
