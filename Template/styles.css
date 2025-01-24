@@ -17,36 +17,34 @@ body {
 
 /* Logo dentro do cabeçalho */
 .logo {
-    display: flex; /* Alinha os itens em linha */
-    align-items: center; /* Centraliza verticalmente os itens */
-    gap: 5px; /* Espaçamento entre imagem e texto */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Espaçamento entre os elementos */
 }
 
 .logo img {
-    width: 60px; /* Define a largura da imagem da logo */
-    height: 60px; /* Define a altura da imagem da logo */
+    width: 40px; /* Ajuste o tamanho da logo conforme necessário */
+    height: auto;
+}
+
+.icon {
+    font-size: 1.2rem;
+    color: #4a90e2; /* Cor azul do ícone */
+    font-family: Arial, sans-serif; /* Adicione a fonte desejada */
 }
 
 .logo h1 {
-    margin: 0; /* Remove margem do título */
-    font-size: 1.5rem; /* Define o tamanho da fonte */
-    font-weight: bold; /* Estilo em negrito */
+    font-size: 2rem;
+    font-weight: bold;
+    background: linear-gradient(90deg, #4a90e2, #4caf50); /* Gradiente azul para verde */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0; /* Remove margens do h1 */
 }
-
-h1 {
-    font-family: 'Poppins', sans-serif; /* Fonte moderna */
-    font-size: 3rem; /* Tamanho grande */
-    font-weight: bold; /* Negrito */
-    background: linear-gradient(90deg, #3c72e7, #01b60a); /* Gradiente horizontal */
-    -webkit-background-clip: text; /* Aplica gradiente ao texto */
-    -webkit-text-fill-color: transparent; /* Preenche o texto com gradiente */
-    text-align: center; /* Centralizado */
-}
-
 
 /* Botão principal */
 .button {
-    background-color: #03a511; /* Define a cor de fundo */
+    background-color: #09c256; /* Define a cor de fundo */
     color: #fff; /* Cor do texto */
     padding: 8px 16px; /* Ajusta o espaçamento interno */
     border: none; /* Remove a borda */
@@ -56,12 +54,12 @@ h1 {
 }
 
 .button:hover {
-    background-color: #27ae60; /* Cor ao passar o mouse */
+    background-color: #1e8649; /* Cor ao passar o mouse */
 }
 
 .status-title .bi-question-circle {
     font-size: 18px; /* Tamanho do ícone */
-    color: #747474; /* Cor do ícone */
+    color: #a1a1a1dc; /* Cor do ícone */
     cursor: pointer; /* Cursor de mão ao passar */
     transition: color 0.3s ease; /* Animação na mudança de cor */
 }
@@ -319,6 +317,9 @@ h2 {
     color: #7f8c8d; /* Texto cinza */
     font-size: 12px; /* Texto pequeno */
 }
+
+
+
 
 /* Rodapé */
 hr {
