@@ -11,13 +11,27 @@
 
 </head>
 <body>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <!-- Header com logo e botão -->
 <div class="header">
     <!-- Div que contém logo e nome -->
     <div class="logo">
-        <img src="/Back End/app/Resource/Logo_DD_N_3-removebg-preview.ico" alt="Logo"> <!-- Imagem da logo -->
-        <h1>Auto Status</h1> <!-- Nome do site -->
+        <!-- Logo da empresa -->
+        <img src="/Back End/app/Resource/Logo_DD_N_3-removebg-preview.ico" alt="Logo">
+        <!-- Ícone -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" fill="#4CAF50">
+            <path d="M3 17h3l3-7 4 4 6-10h3"></path>
+            <circle cx="6" cy="17" r="1.5"></circle>
+            <circle cx="9" cy="10" r="1.5"></circle>
+            <circle cx="13" cy="14" r="1.5"></circle>
+            <circle cx="19" cy="4" r="1.5"></circle>
+        </svg>
+
+
+
+        <!-- Nome do site com gradiente -->
+        <h1>Auto Status</h1>
     </div>
     <!-- Botão de refresh -->
     <button class="button">Gerar PDF</button>
@@ -120,67 +134,40 @@
         </div>
 
 
-
- <div class="container">
-    <h2>Incidentes Passados <i class="fas fa-edit edit-icon"></i></h2>
-        <div class="incident">
-            <div class="incident-date">14 de janeiro de 2025</div>
-            <div class="incident-title">O ChatGPT não consegue navegar na web para obter informações atualizadas.</div>
-            <div class="status status-resolved">Resolvido - Este incidente foi resolvido. <span class="timestamp">14 de janeiro, 03:20 PST</span></div>
-            <div class="status status-monitoring">Monitoramento - Uma correção foi implementada e estamos monitorando os resultados. <span class="timestamp">14 de janeiro, 03:17 PST</span></div>
-            <div class="status status-investigating">Investigando - Estamos investigando o problema no momento. <span class="timestamp">14 de janeiro, 02:58 PST</span></div>
-        </div>
-
-        <div class="incident">
-            <div class="incident-date">13 de janeiro de 2025</div>
-            <div class="incident-title">Problemas de acesso ao fazer login com SSO para ChatGPT</div>
-            <div class="status status-resolved">Resolvido - O problema foi resolvido. <span class="timestamp">13 de janeiro, 12:06 PST</span></div>
-            <div class="status status-monitoring">Monitoramento - Uma correção foi implementada e estamos monitorando os resultados. Publicaremos uma atualização assim que pudermos confirmar a resolução ou se o problema persistir. <span class="timestamp">13 de janeiro, 11:43 PST</span></div>
-            <div class="status status-update">Atualização - Continuamos investigando o problema e forneceremos uma atualização assim que possível. <span class="timestamp">13 de janeiro, 10:33 PST</span></div>
-            <div class="status status-update">Atualização - Continuamos investigando o problema e forneceremos uma atualização assim que possível. <span class="timestamp">13 de janeiro, 09:28 PST</span></div>
-            <div class="status status-investigating">Investigando - Estamos cientes de que alguns usuários estão tendo problemas para fazer login com SSO para ChatGPT e estamos investigando no momento. <span class="timestamp">13 de janeiro, 09:48 PST</span></div>
-        </div>
-
-        <div class="incident">
-            <div class="incident-date">7 de janeiro de 2025</div>
-            <div class="status">Nenhum incidente relatado.</div>
-        </div>
-        <div class="incident">
-            <div class="incident-date">6 de janeiro de 2025</div>
-            <div class="status">Nenhum incidente relatado.</div>
-        </div>
-        <div class="incident">
-            <div class="incident-date">5 de janeiro de 2025</div>
-            <div class="status">Nenhum incidente relatado.</div>
-        </div>
-        <div class="incident">
-            <div class="incident-date">4 de janeiro de 2025</div>
-            <div class="status">Nenhum incidente relatado.</div>
-        </div>
-        <div class="incident">
-            <div class="incident-date">3 de janeiro de 2025</div>
-            <div class="status">Nenhum incidente relatado.</div>
-        </div>
-        <div class="incident">
-            <div class="incident-date">2 de janeiro de 2025</div>
-            <div class="status">Nenhum incidente relatado.</div>
-        </div>
-        <div class="incident">
-            <div class="incident-date">1 de janeiro de 2025</div>
-            <div class="status">Nenhum incidente relatado.</div>
-        </div>
-        <div class="incident">
-            <div class="incident-date">31 de dezembro de 2024</div>
-            <div class="status">Nenhum incidente relatado.</div>
-        </div>
-    </div>
-
-    <footer>
-        <div class="footer-content">
-            <a href="#">&larr; Histórico de incidentes</a>
-        </div>
-    </footer>
-
+        <br>
+           
+        <div style="position: relative; width: 100%; max-width: 1800px; margin: auto;">
+            <iframe 
+              id="myIframe" 
+              src="https://docs.google.com/document/d/1nsKhwhluF29EMY2aHfcZmcsHIttuFvr7km2DGN5yAOM/preview" 
+              width="100%" 
+              height="2500px" 
+              style="border: none;">
+            </iframe>
+            <button onclick="toggleFullScreen()" style="margin-top: 10px; padding: 10px; background-color: #007bff; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
+              Tela Cheia
+            </button>
+          </div>
+          
+              
+              <script>
+                function toggleFullScreen() {
+                  const iframe = document.getElementById('myIframe');
+                  if (iframe.requestFullscreen) {
+                    iframe.requestFullscreen();
+                  } else if (iframe.mozRequestFullScreen) {
+                    iframe.mozRequestFullScreen();
+                  } else if (iframe.webkitRequestFullscreen) {
+                    iframe.webkitRequestFullscreen();
+                  } else if (iframe.msRequestFullscreen) {
+                    iframe.msRequestFullscreen();
+                  }
+                }
+              </script>
+              
+            
+        
+        
 
     
 
