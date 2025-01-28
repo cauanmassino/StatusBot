@@ -2,6 +2,7 @@ from flask import Flask, jsonify, render_template
 from flask_cors import CORS
 from datetime import datetime
 import os
+import json
 
 # Caminho para os diretórios de templates e estáticos
 base_dir = os.path.abspath(os.path.dirname(__file__))
@@ -37,6 +38,7 @@ def get_barras():
         {"dashboard": "Robô de Fechamento", "dia": "Dia 1", "status": "ok"},{"dashboard": "Robô de Fechamento", "dia": "Dia 1", "status": "ok"},
         {"dashboard": "Robô de Fechamento", "dia": "Dia 1", "status": "ok"},{"dashboard": "Robô de Fechamento", "dia": "Dia 1", "status": "ok"},
         {"dashboard": "Robô de Fechamento", "dia": "Dia 1", "status": "ok"},{"dashboard": "Robô de Fechamento", "dia": "Dia 30", "status": "ok"},
+        {"dashboard": "Robô de Fechamento", "dia": "Dia 2", "status": "outage"},
         
         {"dashboard": "Robô de Notificação", "dia": "Dia 2", "status": "ok"},
         {"dashboard": "Robô de Notificação", "dia": "Dia 3", "status": "outage"},
@@ -66,3 +68,38 @@ def get_estado_atual():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0",debug=True, port=5000)
+
+#Adicionando uma Rota para Registrar as Atualizações
+@app.route("/api/registrar_atualizacao", methods=["POST"])
+def registrar_atualizacao():
+    data = request.json  # Recebe os dados da requisição (status, robô, etc.)
+    robô_nome = data.get("robô_nome")
+    status = data.get("status")
+    
+    # Cria uma entrada para o log
+    atualizacao = {
+        "robô_nome": robô_nome,
+        "status": status,
+        "horario": datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    }
+    
+    # Salva o log em um arquivo JSON ou pode ser um banco de dados
+    with open("atualizacoes_log.json", "a") as f:
+        json.dump(atualizacao, f)
+        f.write("\n")
+    
+    return jsonify({"message": "Atualização registrada com sucesso!"})
+
+#Rota para Buscar as Atualizações
+@app.route("/api/atualizacoes", methods=["GET"])
+def obter_atualizacoes():
+    try:
+        # Lê o arquivo de atualizações
+        with open("atualizacoes_log.json", "r") as f:
+            atualizacoes = f.readlines()
+        
+        # Converte cada linha para um dicionário JSON
+        atualizacoes = [json.loads(line) for line in atualizacoes]
+        return jsonify(atualizacoes)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
