@@ -18,18 +18,7 @@
     <!-- Div que contém logo e nome -->
     <div class="logo">
         <!-- Logo da empresa -->
-        <img src="/Back End/app/Resource/Logo_DD_N_3-removebg-preview.ico" alt="Logo">
-        <!-- Ícone -->
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" fill="#4CAF50">
-            <path d="M3 17h3l3-7 4 4 6-10h3"></path>
-            <circle cx="6" cy="17" r="1.5"></circle>
-            <circle cx="9" cy="10" r="1.5"></circle>
-            <circle cx="13" cy="14" r="1.5"></circle>
-            <circle cx="19" cy="4" r="1.5"></circle>
-        </svg>
-
-
-
+        <img src="/static/logodd.ico" alt="Logo">
         <!-- Nome do site com gradiente -->
         <h1>Auto Status</h1>
     </div>
@@ -43,8 +32,11 @@
     <div class="status-item">
         <div class="status-header">
             <div class="status-title">
-                Robô de Fechamento
-                <i class="bi bi-question-circle" title="Ajuda sobre este robô"></i>
+                Robô Fechamento
+                <i class="bi bi-question-circle info-icon" data-nome="Robô Fechamento"></i>
+            </div>
+            <div id="modal-container" style="display: none;">
+                <!-- O conteúdo do modal será preenchido dinamicamente -->
             </div>
             <span class="status-state" id="estado-atual">Carregando...</span> <!-- O estado será atualizado -->
         </div>
@@ -61,7 +53,7 @@
     <div class="status-item">
         <div class="status-header">
             <div class="status-title">Robô de Notificação
-                <i class="bi bi-question-circle" title="Este é um botão de ajuda"></i>
+                <i class="bi bi-question-circle info-icon" data-nome="Robô de Notificação"></i>
             </div> 
             <span class="status-state">Operational</span>
         </div>
@@ -77,7 +69,7 @@
         <div class="status-item">
             <div class="status-header">
                 <div class="status-title">Fluig 
-                    <i class="bi bi-question-circle" title="Este é um botão de ajuda"></i>
+                    <i class="bi bi-question-circle info-icon" data-nome="Fluig"></i>
                 </div>
                 <span class="status-state">Operational</span>
             </div>
@@ -97,7 +89,7 @@
         <div class="status-item">
             <div class="status-header">
                 <div class="status-title">Robô 4 
-                    <i class="bi bi-question-circle" title="Este é um botão de ajuda"></i>
+                    <i class="bi bi-question-circle info-icon" data-nome="Robô 4"></i>
                 </div>
                 <span class="status-state">Operational</span>
             </div>
@@ -117,7 +109,7 @@
         <div class="status-item">
             <div class="status-header">
                 <div class="status-title">Robô 5 
-                    <i class="bi bi-question-circle" title="Este é um botão de ajuda"></i>
+                    <i class="bi bi-question-circle info-icon" data-nome="Robô 5"></i>
                 </div>
                 <span class="status-state">Operational</span>
             </div>
@@ -133,6 +125,13 @@
             </div>
         </div>
 
+        <br>
+
+        <h2>Incidentes Passados</h2>
+ <!-- Container para as atualizações -->
+ <div id="atualizacoes-container">
+    <!-- As atualizações serão carregadas dinamicamente aqui -->
+</div>
 
         <br>
            
@@ -141,7 +140,7 @@
               id="myIframe" 
               src="https://docs.google.com/document/d/1nsKhwhluF29EMY2aHfcZmcsHIttuFvr7km2DGN5yAOM/preview" 
               width="100%" 
-              height="2500px" 
+              height="1500px" 
               style="border: none;">
             </iframe>
             <button onclick="toggleFullScreen()" style="margin-top: 10px; padding: 10px; background-color: #007bff; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
