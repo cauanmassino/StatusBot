@@ -57,6 +57,8 @@ body {
     background-color: #1e8649; /* Cor ao passar o mouse */
 }
 
+
+
 .status-title .bi-question-circle {
     font-size: 18px; /* Tamanho do ícone */
     color: #a1a1a1dc; /* Cor do ícone */
@@ -90,10 +92,26 @@ body {
 }
 
 .tooltip {
-    position: relative; /* Necessário para posicionamento do tooltip */
-    display: inline-block; /* Mantém o elemento em linha */
-}
-
+    position: absolute;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    z-index: 1000;
+  }
+  
+  .tooltip h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .tooltip p {
+    margin: 5px 0;
+  }
+  
 /* Dashboard de Status */
 .status-dashboard {
     max-width: 1165px; /* Limita a largura do container */
@@ -152,17 +170,17 @@ body {
     padding: 5px 10px; /* Espaçamento interno */
     border-radius: 5px; /* Bordas arredondadas */
 }
-.status-state.operando {
-    color: #08ce5a; /* Verde para "Operando" */
-    background-color: #e8f5e84d; /* Fundo claro */
+.status-state.Ativo {
+    color: #08ce5a; /* Verde para "Ativo" */
+    background-color: #0eda0e17; /* Fundo claro */
 }
 
-.status-state.parcial {
-    color: #f5a623; /* Laranja para "Parcial" */
-    background-color: #fff3e065; /* Fundo claro */
+.status-state.Inativo {
+    color: #838383; /* Cinza para "Inativo" */
+    background-color: #9c9c9c17; /* Fundo claro */
 }
 
-.status-state.parado {
+.status-state.Parado {
     color: #ce1212; /* Vermelho para "Parado" */
     background-color: #fbeaea67; /* Fundo claro */
 }
@@ -247,79 +265,37 @@ body {
     color: #555; /* Cor cinza escuro */
 }
 
-/* Comentários e Incidentes */
+#atualizacoes-container {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #ec070700;
+    border-radius: 5px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.atualizacao {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.atualizacao p {
+    margin: 5px 0;
+}
+
+/* incidentes passados */
 h2 {
-    font-size: 1.8rem; /* Ajusta o tamanho do título */
-    display: flex; /* Cria um layout flexível */
-    align-items: center; /* Centraliza verticalmente */
-    gap: 10px; /* Espaçamento entre o texto e o ícone */
-}
-
-.edit-icon {
-    font-size: 1.5rem; /* Ajusta o tamanho do ícone */
-    color: #8f8f8f; /* Cor azul para o ícone */
-    cursor: pointer; /* Mostra o cursor de mão ao passar */
-    transition: color 0.3s; /* Animação de mudança de cor */
-}
-
-.edit-icon:hover {
-    color: #2ecc71; /* Muda para verde ao passar o mouse */
-}
-
-
-.container {
-    width: 90%; /* Largura proporcional */
-    margin: 60px auto; /* Centraliza o container */
-    background: #fff; /* Fundo branco */
-    padding: 30px; /* Espaçamento interno */
-    border-radius: 8px; /* Arredonda os cantos */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adiciona sombra leve */
-}
-
-.incident {
-    border-bottom: 1px solid #ddd; /* Linha separadora */
-    padding-bottom: 10px; /* Espaçamento interno inferior */
-    margin-bottom: 10px; /* Espaçamento inferior */
-}
-
-.incident-date {
-    font-size: 18px; /* Texto maior */
-    font-weight: bold; /* Texto em negrito */
-    color: #333; /* Cor escura */
-    margin-bottom: 10px; /* Espaçamento inferior */
-}
-
-.incident-title {
-    font-size: 16px; /* Texto menor */
-    font-weight: bold; /* Negrito */
-    color: #f39c12; /* Cor laranja */
-    margin-bottom: 10px; /* Espaçamento inferior */
-}
-
-.status {
-    font-size: 14px; /* Tamanho do texto */
-    margin-bottom: 5px; /* Espaçamento inferior */
-}
-
-.status-resolved {
-    color: #27ae60; /* Verde para resolvido */
-}
-
-.status-monitoring {
-    color: #3498db; /* Azul para monitorando */
-}
-
-.status-investigating {
-    color: #e74c3c; /* Vermelho para investigando */
-}
-
-.timestamp {
-    color: #7f8c8d; /* Texto cinza */
-    font-size: 12px; /* Texto pequeno */
-}
-
-
-
+    font-size: 30px;
+    font-family: 'Arial', sans-serif;
+    color: #2c3e50; /* cor escura para o título */
+    text-align: center;
+    letter-spacing: 2px; /* Aumenta o espaçamento entre as letras */
+    padding: 20px 0;
+    border-bottom: 3px solid #3498db; /* Adiciona uma linha embaixo do título */
+  }
 
 /* Rodapé */
 hr {
