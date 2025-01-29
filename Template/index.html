@@ -8,11 +8,16 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&family=Orbitron:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js" integrity="sha512-MpDFIChbcXl2QgipQrt1VcPHMldRILetapBl5MPCA9Y8r7qvlwx1/Mc9hNTzY+kS5kX6PdoDq41ws1HiVNLdZA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
 
 </head>
 <body>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+    <div id="area-captura" style="padding: 20px; border: 1px solid rgba(255, 255, 255, 0);">
 <!-- Header com logo e botão -->
 <div class="header">
     <!-- Div que contém logo e nome -->
@@ -22,8 +27,15 @@
         <!-- Nome do site com gradiente -->
         <h1>Auto Status</h1>
     </div>
+
+        <!-- Área que será capturada -->
+        
+
+        
     <!-- Botão de refresh -->
-    <button class="button">Gerar PDF</button>
+    <button id="gerar-png" class="button">Gerar PNG</button>
+
+    
 </div>
 
 
@@ -44,7 +56,7 @@
         <div class="bar-container"></div>
         <div class="status-footer">
             <span>30 dias atrás</span>
-            <span></span>
+            <span><div class="status-percentage"></div></span>
             <span>Hoje</span>
         </div>
     </div>
@@ -124,14 +136,16 @@
                 <span>Hoje</span>
             </div>
         </div>
-
+    </div>
         <br>
+    </div>
 
         <h2>Incidentes Passados</h2>
- <!-- Container para as atualizações -->
- <div id="atualizacoes-container">
+
+    <!-- Container para as atualizações -->
+        <div id="atualizacoes-container">
     <!-- As atualizações serão carregadas dinamicamente aqui -->
-</div>
+        </div>
 
         <br>
            
