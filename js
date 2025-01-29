@@ -1,7 +1,7 @@
 async function carregarBarras() {
     try {
         // Faz a requisição para a API de barras
-        const response = await fetch("http://10.12.6.179:5000/api/barras");
+        const response = await fetch("http://10.12.3.9:5001/api/barras?token=C4BB38022AF6F0096D02E81BFE4469E91CD7059D18DDE02E1011CDDB8E23799B");
         const barras = await response.json();
 
         // Itera pelos dashboards disponíveis (Robôs)
@@ -41,7 +41,7 @@ async function carregarBarras() {
 async function carregarEstadoAtual() {
     try {
         // Faz a requisição para a API de estado atual
-        const response = await fetch("http://10.12.6.179:5000/api/estado_atual");
+        const response = await fetch("http://10.12.3.9:5001/api/estado_atual?token=C4BB38022AF6F0096D02E81BFE4469E91CD7059D18DDE02E1011CDDB8E23799B");
         const data = await response.json();
 
         // Atualiza o estado de cada robô
@@ -75,7 +75,7 @@ async function carregarEstadoAtual() {
 async function carregarAtualizacoes() {
     try {
         // Faz a requisição para a API de atualizações
-        const response = await fetch("http://10.12.6.179:5000/api/atualizacoes");
+        const response = await fetch("http://10.12.3.9:5001/api/atualizacoes?C4BB38022AF6F0096D02E81BFE4469E91CD7059D18DDE02E1011CDDB8E23799B");
         const atualizacoes = await response.json();
 
         const container = document.getElementById("atualizacoes-container");
@@ -101,7 +101,7 @@ async function carregarAtualizacoes() {
 async function carregarTitles() {
     try {
         // Faz a requisição para obter os títulos dos robôs
-        const response = await fetch("http://10.12.6.179:5000/api/titles");
+        const response = await fetch("http://10.12.3.9:5001/api/titles?token=C4BB38022AF6F0096D02E81BFE4469E91CD7059D18DDE02E1011CDDB8E23799B");
         const titles = await response.json();
 
         // Atualiza o atributo "title" de cada ícone de informação
@@ -116,6 +116,36 @@ async function carregarTitles() {
     }
 }
 
+
+async function carregarPorcentagemAtivos() {
+    try {
+        const response = await fetch("http://127.0.0.1:5000/api/barras");
+        const data = await response.json();
+
+        document.querySelectorAll(".status-item").forEach(item => {
+            const roboNome = item.querySelector(".status-title").textContent.trim();
+            const porcentagem = data[roboNome]?.porcentagem_ativo || 0;
+
+            let porcentagemElement = item.querySelector(".status-percentage");
+            if (!porcentagemElement) {
+                porcentagemElement = document.createElement("div");
+                porcentagemElement.className = "status-percentage";
+                item.appendChild(porcentagemElement);
+            }
+            porcentagemElement.textContent = `Ativo: ${porcentagem}%`;
+        });
+
+    } catch (error) {
+        console.error("Erro ao carregar a porcentagem de ativos:", error);
+    }
+}
+
+// Chama a função ao iniciar
+carregarPorcentagemAtivos();
+
+
+
+
 // Carrega as barras, o estado atual e as atualizações ao iniciar
 carregarBarras();
 carregarEstadoAtual();
@@ -127,3 +157,25 @@ setInterval(carregarBarras, 10000);
 setInterval(carregarEstadoAtual, 10000);
 setInterval(carregarAtualizacoes, 10000);
 carregarTitles();
+
+
+document.getElementById("gerar-png").addEventListener("click", () => {
+    const elementoParaImagem = document.getElementById("area-captura");
+
+    html2canvas(elementoParaImagem, {
+        scale: 2, // Melhora a qualidade da imagem
+        useCORS: true // Permite capturar imagens externas sem erro
+    }).then(canvas => {
+        const imagemDataURL = canvas.toDataURL("image/png"); // Converte para PNG
+        const link = document.createElement("a");
+        link.href = imagemDataURL;
+        link.download = "captura_status.png"; // Nome do arquivo
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }).catch(error => {
+        console.error("Erro ao gerar PNG:", error);
+    });
+});
+
+
