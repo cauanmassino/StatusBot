@@ -17,7 +17,7 @@
 </head>
 <body>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <div id="area-captura" style="padding: 20px; border: 1px solid rgba(255, 255, 255, 0);">
+    <div id="area-captura" style="padding: 20px; border: 1px solid rgba(255, 255, 255, 0);"> 
 <!-- Header com logo e botão -->
 <div class="header">
     <!-- Div que contém logo e nome -->
@@ -34,111 +34,35 @@
         
     <!-- Botão de refresh -->
     <button id="gerar-png" class="button">Gerar PNG</button>
-
-    
-</div>
-
-
-<div class="status-dashboard">
-    <!-- ROBO FECHAMENTO -->
-    <div class="status-item">
-        <div class="status-header">
-            <div class="status-title">
-                Robô Fechamento
-                <i class="bi bi-question-circle info-icon" data-nome="Robô Fechamento"></i>
-            </div>
-            <div id="modal-container" style="display: none;">
-                <!-- O conteúdo do modal será preenchido dinamicamente -->
-            </div>
-            <span class="status-state" id="estado-atual">Carregando...</span> <!-- O estado será atualizado -->
-        </div>
-        
-        <div class="bar-container"></div>
-        <div class="status-footer">
-            <span>30 dias atrás</span>
-            <span><div class="status-percentage"></div></span>
-            <span>Hoje</span>
-        </div>
+   
     </div>
 
-    <!-- Robô de Notificação -->
-    <div class="status-item">
-        <div class="status-header">
-            <div class="status-title">Robô de Notificação
-                <i class="bi bi-question-circle info-icon" data-nome="Robô de Notificação"></i>
-            </div> 
-            <span class="status-state">Operational</span>
-        </div>
-        <div class="bar-container"></div>
-        <div class="status-footer">
-            <span>30 dias atrás</span>
-            <span></span>
-            <span>Hoje</span>
-        </div>
-    </div>
-
-        <!-- Fluig -->
-        <div class="status-item">
-            <div class="status-header">
-                <div class="status-title">Fluig 
-                    <i class="bi bi-question-circle info-icon" data-nome="Fluig"></i>
+    <div class="status-dashboard">
+        <div id="status-container">
+            <!-- Robôs serão inseridos dinamicamente aqui -->
+            <div class="status-item">
+                <div class="status-header">
+                    <div class="status-title">
+                         
+                        <i class="bi bi-question-circle info-icon" data-nome="Robô "></i>
+                    </div>
+                    <div id="modal-container" style="display: none;">
+                        <!-- O conteúdo do modal será preenchido dinamicamente -->
+                    </div>
+                    <span class="status-state" id="estado-atual"></span> <!-- O estado será atualizado -->
                 </div>
-                <span class="status-state">Operational</span>
-            </div>
-            <div class="bar-container">
-                <!-- Barras de exemplo para Fluig -->
                 
-
-            </div>
-            <div class="status-footer">
-                <span>30 dias atrás</span>
-                <span></span>
-                <span>Hoje</span>
-            </div>
-        </div>
-
-        <!-- Robô 4 -->
-        <div class="status-item">
-            <div class="status-header">
-                <div class="status-title">Robô 4 
-                    <i class="bi bi-question-circle info-icon" data-nome="Robô 4"></i>
+                <div class="bar-container"></div>
+                <div class="status-footer">
+                    <span>30 dias atrás</span>
+                    <span class="status-percentage-class"id="status-percentage">teste</span>
+                    <span>Hoje</span>
                 </div>
-                <span class="status-state">Operational</span>
-            </div>
-            <div class="bar-container">
-                <!-- Barras de exemplo para Fluig -->
-                
+            </div>  
 
-            </div>
-            <div class="status-footer">
-                <span>30 dias atrás</span>
-                <span></span>
-                <span>Hoje</span>
-            </div>
-        </div>
-
-        <!-- Robô 5 -->
-        <div class="status-item">
-            <div class="status-header">
-                <div class="status-title">Robô 5 
-                    <i class="bi bi-question-circle info-icon" data-nome="Robô 5"></i>
-                </div>
-                <span class="status-state">Operational</span>
-            </div>
-            <div class="bar-container">
-                <!-- Barras de exemplo para Fluig -->
-                
-
-            </div>
-            <div class="status-footer">
-                <span>30 dias atrás</span>
-                <span></span>
-                <span>Hoje</span>
-            </div>
         </div>
     </div>
-        <br>
-    </div>
+  </div>
 
         <h2>Incidentes Passados</h2>
 
