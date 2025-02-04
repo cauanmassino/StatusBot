@@ -90,6 +90,12 @@ def registrar_atualizacao():
     
     return jsonify({"message": "Atualização registrada com sucesso!"})
 
+
+
+
+
+
+
 #Rota para Buscar as Atualizações
 @app.route("/api/atualizacoes", methods=["GET"])
 def obter_atualizacoes():
