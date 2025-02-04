@@ -1,11 +1,11 @@
 async function carregarBarras() {
     try {
-        // Faz a requisição para a API de barras
         const response = await fetch("http://10.12.3.9:5001/api/barras?token=C4BB38022AF6F0096D02E81BFE4469E91CD7059D18DDE02E1011CDDB8E23799B");
-        const barras = await response.json();
+        const dados = await response.json();
+        
+        console.log("Dados recebidos da API:", dados); // Debug dos dados
 
-        // Itera pelos dashboards disponíveis (Robôs)
-        ["Robô Fechamento", "Robô de Notificação", "Fluig", "Robô 4", "Robô 5"].forEach(dashboard => {
+        Object.entries(dados).forEach(([dashboard, info]) => {
             const statusItem = Array.from(document.querySelectorAll(".status-item"))
                 .find(item => item.querySelector(".status-title").textContent.trim() === dashboard);
 
@@ -13,23 +13,23 @@ async function carregarBarras() {
                 const barContainer = statusItem.querySelector(".bar-container");
                 barContainer.innerHTML = ""; // Limpa as barras existentes
 
-                // Filtra as barras para o dashboard atual e adiciona dinamicamente
-                barras.filter(barra => barra.dashboard === dashboard).forEach(barra => {
-                    const barElement = document.createElement("div");
-                    barElement.classList.add("bar");
+                Object.entries(info.detalhes).forEach(([data, statusContagem]) => {
+                    console.log("Data recebida:", data); // Debug da data
 
-                    // Define a classe com base no status
-                    if (barra.status === "Ativo") {
-                        barElement.classList.add("bar-Ativo");
-                    } else if (barra.status === "Parado") {
-                        barElement.classList.add("bar-Parado");
-                    } else if (barra.status === "Inativo") {
-                        barElement.classList.add("bar-Inativo");
-                    }
+                    // Formata a data corretamente
+                    const [ano, mes, dia] = data.split("-");
+                    const dataFormatada = `${dia}/${mes}/${ano}`;
 
-                    // Adiciona o tooltip
-                    barElement.setAttribute("data-title", `${barra.dia}: ${barra.status}`);
-                    barContainer.appendChild(barElement);
+                    Object.entries(statusContagem).forEach(([status, quantidade]) => {
+                        for (let i = 0; i < quantidade; i++)  {const [ano, mes, dia] = data.split("-");
+                            const dataFormatada = `${dia}/${mes}/${ano}`;
+                            const barElement = document.createElement("div");
+                            barElement.classList.add("bar", `bar-${status.toLowerCase()}`);
+                            
+                            barElement.setAttribute("data-title", `${dataFormatada}: ${status}`);
+                            barContainer.appendChild(barElement);
+                        }
+                    });
                 });
             }
         });
@@ -37,6 +37,9 @@ async function carregarBarras() {
         console.error("Erro ao carregar as barras:", error);
     }
 }
+
+
+
 
 async function carregarEstadoAtual() {
     try {
@@ -75,7 +78,7 @@ async function carregarEstadoAtual() {
 async function carregarAtualizacoes() {
     try {
         // Faz a requisição para a API de atualizações
-        const response = await fetch("http://10.12.3.9:5001/api/atualizacoes?C4BB38022AF6F0096D02E81BFE4469E91CD7059D18DDE02E1011CDDB8E23799B");
+        const response = await fetch("http://10.12.3.9:5001/api/atualizacoes?token=C4BB38022AF6F0096D02E81BFE4469E91CD7059D18DDE02E1011CDDB8E23799B");
         const atualizacoes = await response.json();
 
         const container = document.getElementById("atualizacoes-container");
@@ -117,22 +120,28 @@ async function carregarTitles() {
 }
 
 
+
+
 async function carregarPorcentagemAtivos() {
     try {
-        const response = await fetch("http://127.0.0.1:5000/api/barras");
+        const response = await fetch("http://10.12.3.9:5001/api/barras?token=C4BB38022AF6F0096D02E81BFE4469E91CD7059D18DDE02E1011CDDB8E23799B");
         const data = await response.json();
 
         document.querySelectorAll(".status-item").forEach(item => {
             const roboNome = item.querySelector(".status-title").textContent.trim();
-            const porcentagem = data[roboNome]?.porcentagem_ativo || 0;
+            const porcentagem = data[roboNome]?.tempo_atividade || 0;
 
-            let porcentagemElement = item.querySelector(".status-percentage");
+            const porcentagemElement = item.querySelector(".status-percentage-class");
+            porcentagemElement.textContent = "Tempo de atividade: "+porcentagem;
+          
+
             if (!porcentagemElement) {
+                
                 porcentagemElement = document.createElement("div");
                 porcentagemElement.className = "status-percentage";
-                item.appendChild(porcentagemElement);
+                //item.appendChild(porcentagemElement);
             }
-            porcentagemElement.textContent = `Ativo: ${porcentagem}%`;
+            //porcentagemElement.textContent = `Tempo de Atividade: ${porcentagem}%`;
         });
 
     } catch (error) {
@@ -140,8 +149,53 @@ async function carregarPorcentagemAtivos() {
     }
 }
 
-// Chama a função ao iniciar
-carregarPorcentagemAtivos();
+
+
+async function carregarRobos() {
+    const token = "C4BB38022AF6F0096D02E81BFE4469E91CD7059D18DDE02E1011CDDB8E23799B";
+    const url = `http://10.12.3.9:5001/api/robos?token=C4BB38022AF6F0096D02E81BFE4469E91CD7059D18DDE02E1011CDDB8E23799B`;
+    
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        
+        if (data.robos) {
+            const container = document.getElementById("status-container"); // Onde os blocos serão inseridos
+            
+            container.innerHTML = ""; // Limpa a área antes de adicionar novos elementos
+
+            data.robos.forEach(robo => {
+                const statusItem = document.createElement("div");
+                statusItem.classList.add("status-item");
+
+                statusItem.innerHTML = `
+                    <div class="status-header">
+                        <div class="status-title">
+                            ${robo}
+                            <i class="bi bi-question-circle info-icon" data-nome="${robo}"></i>
+                        </div>
+                        <span class="status-state">Carregando...</span>
+                    </div>
+                    <div class="bar-container"></div>
+                    <div class="status-footer">
+                        <span>30 dias atrás</span>
+                        <span class="status-percentage-class">Carregando...</span>
+                        <span>Hoje</span>
+                    </div>
+                `;
+
+                container.appendChild(statusItem);
+            });
+        } else {
+            console.error("Erro ao carregar os robôs:", data.erro);
+        }
+    } catch (error) {
+        console.error("Erro na requisição:", error);
+    }
+}
+
+
+
 
 
 
@@ -151,6 +205,9 @@ carregarBarras();
 carregarEstadoAtual();
 carregarAtualizacoes();  // Adiciona a chamada para carregar as atualizações
 carregarTitles();
+carregarRobos();
+carregarPorcentagemAtivos();
+
 
 // Atualiza as barras, o estado atual e as atualizações a cada 10 segundos
 setInterval(carregarBarras, 10000);
@@ -177,5 +234,7 @@ document.getElementById("gerar-png").addEventListener("click", () => {
         console.error("Erro ao gerar PNG:", error);
     });
 });
+
+
 
 
